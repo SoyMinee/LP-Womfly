@@ -6,6 +6,7 @@
     --black-solid: #111111; /* Para la silueta de la mariposa */
 }
 
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -23,6 +24,25 @@ body {
     /* ESTA LÍNEA ES LA MÁS IMPORTANTE: controla la suavidad del cambio */
     transition: background-color 1.2s ease-in-out;
 }
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: .05;
+    z-index: 9999;
+    pointer-events: none;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+}
+
+.instruction {
+    font-family: 'Indie Flower', cursive;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+
 
 h2, h3, .hero-subtitle {
     font-family: 'Playfair Display', serif;
@@ -46,6 +66,7 @@ h2, h3, .hero-subtitle {
     z-index: 1000;
     border-bottom: 1px solid rgba(233, 215, 194, 0.2);
 }
+
 
 #sticky-header.visible {
     top: 0;
@@ -232,6 +253,41 @@ h2, h3, .hero-subtitle {
     padding: 100px 5%;
     text-align: center;
 }
+/* Estado base de la nota extra */
+.exhibitor-info.extra-info-note {
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform-origin: center;
+    position: relative;
+    z-index: 1; /* Por debajo de la nota principal si fuera necesario */
+}
+
+/* Animación de SALIDA (Se arruga y vuela) */
+.extra-info-note.crumple-exit {
+    opacity: 0;
+    /* Se vuelve una bola (border-radius), se encoge (scale) y sale disparada arriba a la derecha */
+    transform: translate(500px, -500px) scale(0.1) rotate(720deg);
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+/* Animación de ENTRADA (Se desliza por debajo) */
+.extra-info-note.slide-entry {
+    animation: slideInFromUnder 0.8s forwards;
+    display: block !important;
+}
+
+@keyframes slideInFromUnder {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) rotate(-5deg); /* Viene de detrás de la nota 1 */
+        z-index: -1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(2deg); /* Se coloca en su sitio */
+        z-index: 1;
+    }
+}
 
 /* =========================================
    MARIPOSA GRANDE (Expositor) - FORMAS ORGÁNICAS
@@ -307,18 +363,42 @@ h2, h3, .hero-subtitle {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 110%;
     max-width: 1200px;
     gap: 50px;
 }
 
 /* Columna de Información */
+/* Estilo para que la columna de info parezca una nota adhesiva o recorte */
 .exhibitor-info {
+    background-color: #fcf5e5; /* Color papel hueso */
+    background-image: 
+        linear-gradient(90deg, rgba(200,0,0,.05) 50%, transparent 50%), /* Líneas de cuaderno opcionales */
+        linear-gradient(rgba(0,0,200,.05) 1px, transparent 1px);
+    background-size: 100% 2rem;
+    padding: 30px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    position: relative;
     flex: 1;
     text-align: left;
     padding-left: 20px;
+    transform: rotate(-1deg); /* Ligera rotación para naturalidad */
+    border-radius: 2px;
+    color: #333; /* Texto oscuro para papel claro */
 }
 
+/* El "clip" o celo que sujeta la nota */
+.exhibitor-info::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.3); /* Efecto cinta celo */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 .info-content {
     border-left: 2px solid var(--gold); /* Línea de detalle elegante */
     padding-left: 25px;
@@ -328,7 +408,7 @@ h2, h3, .hero-subtitle {
 .description {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: var(--text-cream);
+    color: var(--black-solid);
     opacity: 0.9;
 }
 
@@ -398,4 +478,44 @@ h2, h3, .hero-subtitle {
 @media (max-width: 768px) {
     .exhibitor-wing { width: 150px; height: 250px; }
     .exhibitor-butterfly-body { height: 200px; }
+}
+
+
+
+/* ===========================================
+    Reviews
+    ======================================== */
+.reviews-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px; /* Separación de la mariposa */
+    padding-bottom: 50px;
+}
+
+.review-scrapbook-frame {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 800px;
+    width: 90%;
+    /* Borde irregular de folio */
+    clip-path: polygon(0% 1%, 100% 0%, 98% 98%, 2% 100%);
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.1);
+    transform: rotate(-0.5deg);
+    border: 1px solid #eee;
+    position: relative;
+}
+
+/* El toque del celo/washi tape para "pegar" el widget al fondo */
+.review-scrapbook-frame::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 10%;
+    width: 100px;
+    height: 35px;
+    background: rgba(255, 255, 200, 0.5); /* Color cinta adhesiva */
+    transform: rotate(-10deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 10;
 }

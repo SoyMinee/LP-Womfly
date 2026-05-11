@@ -9,20 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             desc: "La unión de dos mundos creativos bajo una misma visión: Womfly.",
             client: "Explora el universo Womfly",
-            imgL: "media/logo-grande.png",
+            extra: "Descripción inicial o bienvenida del catálogo.",
+            imgL: "media/fotodual.jpeg",
             imgR: "media/logoblanco-pequeno.png",
             color: "#9bc4fe"
         },
         {
-            desc: "Estética avanzada y cuidado personal. Un enfoque centrado en la armonía corporal.",
+            desc: "\"La belleza más allá de la piel\" Mi objetivo es promover el autocuidado fomentando el descubrimiento del propio espacio y bienestar.",
             client: "Cliente: Kalon Sandra Pérez",
+            extra: "Descripción inicial o bienvenida del catálogo.",
             imgL: "media/sandra.png", 
             imgR: "media/logo-kalon.png",
             color: "#e9c2db" 
         },
         {
-            desc: "Narrativa visual y fotografía estratégica para marcas con identidad propia.",
-            client: "Cliente: Olivalolò Oliva López",
+            desc: "Contenido visual cuidado y estratégico: transformamos la identidad de marca en imágenes con valor, coherencia y estética avanzada.",
+            client: "",
+            extra: "Descripción inicial o bienvenida del catálogo.",
             imgL: "media/olivalolo.png",
             imgR: "media/logo-olivalolo.png",
             color: "#df1c4a"
@@ -89,6 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectClient = document.getElementById('project-client');
     const imgLeft = document.getElementById('img-left');
     const imgRight = document.getElementById('img-right');
+    const extraColumn = document.getElementById('extra-info-column');
+    const extraDesc = document.getElementById('project-extra-desc');
 
     if (mainButterfly) {
         mainButterfly.addEventListener('click', () => {
@@ -106,6 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 imgRight.src = p.imgR;
                 if (projectDesc) projectDesc.textContent = p.desc;
                 if (projectClient) projectClient.textContent = p.client;
+                if (currentIndex === 0) {
+                    // Ocultar si volvemos al principio
+                    extraColumn.style.opacity = "0";
+                    setTimeout(() => { extraColumn.style.display = "none"; }, 500);
+                } else {
+                    // Mostrar y actualizar texto extra
+                    extraDesc.textContent = p.extra;
+                    extraColumn.style.display = "block";
+                    setTimeout(() => { extraColumn.style.opacity = "1"; }, 10);
+                }
 
                 document.documentElement.style.setProperty('--accent-color', p.color);
 
