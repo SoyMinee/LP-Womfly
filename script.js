@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
     let isAnimating = false;
+    let detailsActivated = false;
+    const exhibitorContainer = document.querySelector('.exhibitor-container');
 
     // =========================================
     // 2. SCROLL HORIZONTAL Y GESTIÓN DE COLOR
@@ -81,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Sincronizar el color inicial de los pétalos con el color de énfasis del fondo
+    document.documentElement.style.setProperty('--accent-color', colorInicio);
     updateBackground();
 
     // =========================================
@@ -99,6 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
         mainButterfly.addEventListener('click', () => {
             if (isAnimating) return;
             isAnimating = true;
+
+            if (!detailsActivated) {
+                detailsActivated = true;
+                mainButterfly.classList.add('shift-right');
+                if (exhibitorContainer) exhibitorContainer.classList.add('details-open');
+            }
 
             mainButterfly.classList.add('is-folding');
             if (infoWrapper) infoWrapper.classList.add('fade-out-right');
