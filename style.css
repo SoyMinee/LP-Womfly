@@ -2081,7 +2081,6 @@
 }
 #title span {
   background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -2680,10 +2679,153 @@ h2, h3, .hero-subtitle {
    5. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    .exhibitor-wing { width: 150px; height: 250px; }
-    .exhibitor-butterfly-body { height: 200px; }
+    #sticky-header {
+        padding: 8px 16px;
+    }
+
+    .header-logo img {
+        height: 36px;
+    }
+
+    .header-links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .header-links a {
+        margin-left: 0;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        font-size: 0.95rem;
+    }
+
+    .blockView {
+        width: calc(100% - 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        height: 28px;
+    }
+
+    .review-widget_net {
+        margin-top: 12px;
+    }
+
+    .hero {
+        padding: 18px 16px 40px;
+    }
+
+    .logo-with-butterflies {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .hero-logo-text {
+        font-size: clamp(2.8rem, 11vw, 3.8rem);
+    }
+
+    .main-logo {
+        width: min(260px, 80vw);
+    }
+
+    .brands-preview {
+        gap: 18px;
+        margin-top: 16px;
+    }
+
+    .brands-preview img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .exhibitor-section {
+        padding: 70px 16px;
+    }
+
+    .exhibitor-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0;
+    }
+
+    .exhibitor-text-side {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .exhibitor-info,
+    .extra-info-note {
+        transform: rotate(0deg);
+        width: 100%;
+        padding: 22px;
+    }
+
+    .extra-info-note {
+        margin-top: 0;
+    }
+
+    .exhibitor-interactive {
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .butterfly-exhibitor-wrapper.shift-right {
+        transform: translateX(0) scale(0.85);
+    }
+
+    .exhibitor-wing {
+        width: 220px;
+        height: 320px;
+    }
+
+    .exhibitor-butterfly-body {
+        height: 220px;
+    }
 }
 
+@media (max-width: 480px) {
+    #sticky-header {
+        padding: 8px 12px;
+    }
+
+    .header-links {
+        justify-content: center;
+    }
+
+    .blockView {
+        width: calc(100% - 28px);
+    }
+
+    .hero-logo-text {
+        font-size: clamp(2.2rem, 14vw, 3rem);
+    }
+
+    .main-logo {
+        width: min(220px, 70vw);
+    }
+
+    .exhibitor-wing {
+        width: 180px;
+        height: 250px;
+    }
+
+    .exhibitor-butterfly-body {
+        height: 180px;
+    }
+
+    .exhibitor-info,
+    .extra-info-note {
+        padding: 18px;
+    }
+
+    .info-content {
+        padding-left: 18px;
+    }
+}
 
 
 /* ===========================================
