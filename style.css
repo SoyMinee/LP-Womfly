@@ -2177,12 +2177,12 @@ h2, h3, .hero-subtitle {
     top: -100px; /* Oculto por defecto */
     left: 0;
     width: 100%;
-    background-color: rgba(42, 59, 61, 0.95);
+    background-color: color-mix(in srgb, var(--accent-color), black 80%);;
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 8px 5%;
     transition: top 0.4s ease-in-out;
     z-index: 1000;
     border-bottom: 1px solid rgba(233, 215, 194, 0.2);
@@ -2207,11 +2207,33 @@ h2, h3, .hero-subtitle {
     align-items: center;
 }
 
+.review-widget_net {
+    margin-top: 10px;
+}
+#booksy-link{
+    margin-bottom: 10px;
+    padding-bottom: 70px;
+    z-index: 30;
+}
+
 .header-logo img {
     height: 45px;      
     width: auto;       
     max-width: 150px;  
     object-fit: contain;
+}
+
+.blockView {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 1110px;
+    width: 250px;
+    height: 30px;
+    background-color: color-mix(in srgb, var(--accent-color), black 80%);
+    z-index: 5;
+    pointer-events: none;
 }
 
 /* =========================================
@@ -2403,6 +2425,7 @@ h2, h3, .hero-subtitle {
 /* Estado base de la nota extra */
 .exhibitor-info.extra-info-note {
     transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    width: 400px;
     transform-origin: center;
     position: relative;
     z-index: 1; /* Por debajo de la nota principal si fuera necesario */
@@ -2497,6 +2520,9 @@ h2, h3, .hero-subtitle {
     
     overflow: hidden; /* Para que la imagen se corte con la forma curva */
 }
+#project-extra-desc {
+    white-space: pre-line;
+}
 
 .exhibitor-wing-inner img {
     width: 100%;
@@ -2562,10 +2588,7 @@ h2, h3, .hero-subtitle {
 /* Estilo para que la columna de info parezca una nota adhesiva o recorte */
 .exhibitor-info {
     flex: unset;
-    background-color: #fcf5e5; /* Color papel hueso */
-    background-image: 
-        linear-gradient(90deg, rgba(200,0,0,.05) 50%, transparent 50%), /* Líneas de cuaderno opcionales */
-        linear-gradient(rgba(0,0,200,.05) 1px, transparent 1px);
+    background-color: #fcf5e5; /* Color papel hueso */ /* Líneas de cuaderno opcionales */
     background-size: 100% 2rem;
     padding: 30px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
@@ -2579,17 +2602,6 @@ h2, h3, .hero-subtitle {
 }
 
 /* El "clip" o celo que sujeta la nota */
-.exhibitor-info::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.3); /* Efecto cinta celo */
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
 .info-content {
     border-left: 2px solid var(--gold); /* Línea de detalle elegante */
     padding-left: 25px;

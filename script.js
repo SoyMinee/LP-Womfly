@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. CONFIGURACIÓN DE DATOS (Proyectos)
     // =========================================
     const colorInicio = "#1dbbff"; // Color base al estar al principio
-
+    const textoKalon = "TRATAMIENTOS FACIALES:\n• Higiene facial\n• Higiene más Técnica de Kobido\n\nTRATAMIENTOS CORPORALES:\n• Higiene corporal\n• Ritual chocolate\n• Terapia Geotermal\n• Tratamiento anticelulítico\n";
     const projects = [
         {
             desc: "La unión de dos mundos creativos bajo una misma visión: Womfly.",
             client: "Explora el universo Womfly",
             extra: "Descripción inicial o bienvenida del catálogo.",
             imgL: "media/fotodual.jpeg",
-            imgR: "media/logoblanco-pequeno.png",
+            imgR: "media/logo-grandeB.png",
             color: "#9bc4fe"
         },
         {
             desc: "\"La belleza más allá de la piel\" Mi objetivo es promover el autocuidado fomentando el descubrimiento del propio espacio y bienestar.",
-            client: "Cliente: Kalon Sandra Pérez",
-            extra: "Descripción inicial o bienvenida del catálogo.",
+            client: "",
+            extra: textoKalon,
             imgL: "media/sandra.png", 
             imgR: "media/logo-kalon.png",
             color: "#e9c2db" 
@@ -123,8 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (projectClient) projectClient.textContent = p.client;
                 if (currentIndex === 0) {
                     // Ocultar si volvemos al principio
-                    extraColumn.style.opacity = "0";
-                    setTimeout(() => { extraColumn.style.display = "none"; }, 500);
+                    extraColumn.style.opacity = "1";
                 } else {
                     // Mostrar y actualizar texto extra
                     extraDesc.textContent = p.extra;
